@@ -8,6 +8,27 @@
 </head>
 <body>
     <h1>My Library</h1>
+    <dialog id="bookDialog">
+        <p>Add the below details to place your book in library!!</p>
+        <form id="bookForm" method="dialog">
+
+            <label for="title">Title<span aria-label="required">*</span></label>
+            <input type="text" name="title" id="title" required>
+
+            <label for="author">Author<span aria-label="required">*</span></label>
+            <input type="text" name="author" id="author" required>
+
+            <label for="pages">Number of Pages<span aria-label="required">*</span></label>
+            <input type="number" name="pages" id="pages" required>
+
+            <label for="read">Have you read<span aria-label="required">*</span></label>
+            <input type="checkbox" name="read" id="read">
+
+            <button id="Submit">Submit</button>
+            <button id="button">Close</button>
+        </form>
+    </dialog>
+    <button id="newBook">+ New Book</button>
     <div id="library"></div>
     <script src="script.js"></script>
 </body>
