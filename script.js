@@ -15,6 +15,15 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
+// Remove book helper
+function removeBook(id) {
+  const index = myLibrary.findIndex(book => book.id === id);
+  if (index !== -1) {
+    myLibrary.splice(index, 1); // remove from array
+    displayBooks(); // re-render
+  }
+}
+
 // Display books in table format
 function displayTable() {
   const container = document.querySelector("#library");
@@ -23,19 +32,27 @@ function displayTable() {
   const table = document.createElement("table");
   table.innerHTML = `
     <tr>
-      <th>Title</th><th>Author</th><th>Pages</th><th>Read</th>
+      <th>Title</th><th>Author</th><th>Pages</th><th>Read</th><th>Action</th>
     </tr>
   `;
 
   myLibrary.forEach(book => {
-    table.innerHTML += `
-      <tr>
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.pages}</td>
-        <td>${book.read ? "✅" : "❌"}</td>
-      </tr>
+    const row = document.createElement("tr");
+    row.dataset.id = book.id;
+
+    row.innerHTML = `
+      <td>${book.title}</td>
+      <td>${book.author}</td>
+      <td>${book.pages}</td>
+      <td>${book.read ? "✅" : "❌"}</td>
+      <td><button class="removeBtn">Remove</button></td>
     `;
+
+    document.querySelector("#removeBtn").addEventListener("click",()=>{
+        removeBook(book.id);
+    })
+
+    table.appendChild(row);
   });
 
   container.appendChild(table);
@@ -49,12 +66,20 @@ function displayCards() {
   myLibrary.forEach(book => {
     const card = document.createElement("div");
     card.className = "book-card";
+    card.dataset.id = book.id;
+
     card.innerHTML = `
       <h3>${book.title}</h3>
       <p><strong>Author:</strong> ${book.author}</p>
       <p><strong>Pages:</strong> ${book.pages}</p>
       <p><strong>Read:</strong> ${book.read ? "✅ Yes" : "❌ No"}</p>
+      <button class="removeBtn">Remove</button>
     `;
+
+    card.querySelector(".removeBtn").addEventListener("click", () => {
+      removeBook(book.id);
+    });
+
     container.appendChild(card);
   });
 }
