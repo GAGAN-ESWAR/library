@@ -21,24 +21,22 @@ function displayTable() {
   container.innerHTML = "";
 
   const table = document.createElement("table");
-  const headerRow = document.createElement("tr");
+  table.innerHTML = `
+    <tr>
+      <th>Title</th><th>Author</th><th>Pages</th><th>Read</th>
+    </tr>
+  `;
 
-  for (let prop in myLibrary[0]) {
-    const th = document.createElement("th");
-    th.textContent = prop;
-    headerRow.appendChild(th);
-  }
-  table.appendChild(headerRow);
-
-  for (let book of myLibrary) {
-    const row = document.createElement("tr");
-    for (let prop in book) {
-      const td = document.createElement("td");
-      td.textContent = book[prop];
-      row.appendChild(td);
-    }
-    table.appendChild(row);
-  }
+  myLibrary.forEach(book => {
+    table.innerHTML += `
+      <tr>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.pages}</td>
+        <td>${book.read ? "✅" : "❌"}</td>
+      </tr>
+    `;
+  });
 
   container.appendChild(table);
 }
@@ -48,9 +46,9 @@ function displayCards() {
   const container = document.querySelector("#library");
   container.innerHTML = "";
 
-  for (let book of myLibrary) {
+  myLibrary.forEach(book => {
     const card = document.createElement("div");
-    card.classList.add("book-card");
+    card.className = "book-card";
     card.innerHTML = `
       <h3>${book.title}</h3>
       <p><strong>Author:</strong> ${book.author}</p>
@@ -58,19 +56,16 @@ function displayCards() {
       <p><strong>Read:</strong> ${book.read ? "✅ Yes" : "❌ No"}</p>
     `;
     container.appendChild(card);
-  }
+  });
 }
 
 // Ask user how they want to view
 function displayBooks() {
-  if (myLibrary.length === 0) return;
-
-  const choice = prompt("How would you like to see your library? (table / card)");
-
-  if (choice.toLowerCase() === "table") {
+  const viewToggle = document.querySelector("#viewToggle");
+  if (viewToggle.checked) {
     displayTable();
   } else {
-    displayCards(); // default to cards if not table
+    displayCards();
   }
 }
 
@@ -81,3 +76,33 @@ addBookToLibrary("The Hobbit", "Tolkien", 310, true);
 
 // Render
 displayBooks();
+
+let opnBtn = document.querySelector("#newBook");
+let closeBtn = document.querySelector("#closeButton");
+let dialog = document.querySelector("#bookDialog");
+let form = document.querySelector("#bookForm");
+
+opnBtn.addEventListener("click", ()=> dialog.showModal());
+closeBtn.addEventListener("click", ()=> dialog.close());
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // prevent page reload
+
+  const title = document.querySelector("#title").value.trim();
+  const author = document.querySelector("#author").value.trim();
+  const pages = document.querySelector("#pages").value;
+  const read = document.querySelector("#read").checked;
+
+  if (!title || !author || !pages) return;
+
+  addBookToLibrary(title, author, pages, read);
+
+  form.reset();
+  dialog.close();
+
+  displayBooks(); // re-render after adding new book
+});
+
+// re-render if user changes view toggle
+document.querySelector("#viewToggle").addEventListener("change", displayBooks);
+
