@@ -134,3 +134,70 @@ tr:hover {
 .removeBtn {
   background: #e74c3c;
 }
+
+/* Dialog modal */
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: #ffffff;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#bookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+#bookForm input, #bookForm button {
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#bookForm button {
+  border: none;
+  cursor: pointer;
+  background: #6c5ce7;
+  color: white;
+}
+
+#bookForm button:hover {
+  background: #a29bfe;
+}
+
+#closeButton {
+  background: #d63031;
+}
+
+#closeButton:hover {
+  background: #ff7675;
+}
+
+/* Make checkbox row layout */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  color: #555;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}

@@ -15,7 +15,7 @@
             Table View <input type="checkbox" id="viewToggle">
         </label>
     </div>
-    <dialog id="bookDialog">
+    <dialog id="bookDialog" closedby="any">
         <p>Add the below details to place your book in library!!</p>
         <form id="bookForm" method="dialog">
 
@@ -28,14 +28,20 @@
             <label for="pages">Number of Pages<span aria-label="required">*</span></label>
             <input type="number" name="pages" id="pages" required>
 
-            <label for="read">Have you read<span aria-label="required">*</span></label>
-            <input type="checkbox" name="read" id="read">
+            <div class="checkbox-row">
+                <label for="read">Have you read??</label>
+                <input type="checkbox" name="read" id="read">
+            </div>
 
             <button type="submit" id="submit">Submit</button>
             <button type="button" id="closeButton">Close</button>
         </form>
     </dialog>
     <div id="library"></div>
+    <footer>
+        © 2025 Gagan. All rights reserved.
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
