@@ -8,6 +8,11 @@
 </head>
 <body>
     <h1>My Library</h1>
+    <!-- Toggle for view selection -->
+    <label>
+        <input type="checkbox" id="viewToggle">
+        Table View
+    </label>
     <dialog id="bookDialog">
         <p>Add the below details to place your book in library!!</p>
         <form id="bookForm" method="dialog">
@@ -24,8 +29,8 @@
             <label for="read">Have you read<span aria-label="required">*</span></label>
             <input type="checkbox" name="read" id="read">
 
-            <button id="Submit">Submit</button>
-            <button id="button">Close</button>
+            <button type="submit" id="submit">Submit</button>
+            <button type="button" id="closeButton">Close</button>
         </form>
     </dialog>
     <button id="newBook">+ New Book</button>
