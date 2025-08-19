@@ -9,6 +9,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function(){
+    this.read = !this.read;
+}
+
 // Add book
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
@@ -45,10 +49,18 @@ function displayTable() {
       <td>${book.author}</td>
       <td>${book.pages}</td>
       <td>${book.read ? "✅" : "❌"}</td>
-      <td><button class="removeBtn">Remove</button></td>
+      <td>
+        <button class="toggleBtn">Toggle Read</button>
+        <button class="removeBtn">Remove</button>
+      </td>
     `;
 
-    document.querySelector("#removeBtn").addEventListener("click",()=>{
+    row.querySelector(".toggleBtn").addEventListener("click",()=>{
+        book.toggleRead();
+        displayBooks();
+    })
+
+    row.querySelector(".removeBtn").addEventListener("click",()=>{
         removeBook(book.id);
     })
 
@@ -73,12 +85,18 @@ function displayCards() {
       <p><strong>Author:</strong> ${book.author}</p>
       <p><strong>Pages:</strong> ${book.pages}</p>
       <p><strong>Read:</strong> ${book.read ? "✅ Yes" : "❌ No"}</p>
+      <button class="toggleBtn">Toggle Read</button>
       <button class="removeBtn">Remove</button>
     `;
 
     card.querySelector(".removeBtn").addEventListener("click", () => {
       removeBook(book.id);
     });
+
+    card.querySelector(".toggleBtn").addEventListener("click",()=>{
+        book.toggleRead();
+        displayBooks();
+    })
 
     container.appendChild(card);
   });
