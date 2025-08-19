@@ -9,10 +9,12 @@
 <body>
     <h1>My Library</h1>
     <!-- Toggle for view selection -->
-    <label>
-        <input type="checkbox" id="viewToggle">
-        Table View
-    </label>
+    <div class="top-bar">
+        <button id="newBook">+ New Book</button>
+        <label>
+            Table View <input type="checkbox" id="viewToggle">
+        </label>
+    </div>
     <dialog id="bookDialog">
         <p>Add the below details to place your book in library!!</p>
         <form id="bookForm" method="dialog">
@@ -33,7 +35,6 @@
             <button type="button" id="closeButton">Close</button>
         </form>
     </dialog>
-    <button id="newBook">+ New Book</button>
     <div id="library"></div>
     <script src="script.js"></script>
 </body>

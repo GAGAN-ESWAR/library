@@ -1,13 +1,136 @@
+/* General styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: #f4f6f9;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Top bar (toggle + new book) */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+#newBook {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#newBook:hover {
+  background: #2980b9;
+}
+
+#viewToggle {
+  transform: scale(1.2);
+  margin-left: 0.5rem;
+}
+
+/* Library Container */
 #library {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
+/* Book Card Styling */
 .book-card {
-  background: #f8f9fa;
+  background: white;
   padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  width: 200px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  width: 220px;
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+}
+
+.book-card h3 {
+  margin: 0;
+  color: #34495e;
+}
+
+.book-card p {
+  margin: 0.4rem 0;
+}
+
+/* Buttons inside cards */
+.book-card button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: 0.3s;
+}
+
+.book-card button.toggleBtn {
+  background: #27ae60;
+  margin-right: 0.5rem;
+}
+
+.book-card button:hover {
+  opacity: 0.85;
+}
+
+/* Table View */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #3498db;
+  color: white;
+}
+
+tr:hover {
+  background: #f1f9ff;
+}
+
+.toggleBtn, .removeBtn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.toggleBtn {
+  background: #27ae60;
+  margin-right: 0.5rem;
+}
+
+.removeBtn {
+  background: #e74c3c;
 }
