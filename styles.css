@@ -1,0 +1,13 @@
+#library {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.book-card {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  width: 200px;
+}
